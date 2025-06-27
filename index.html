@@ -5,18 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>✨ Free Download – AgrimArt</title>
 
-  <!-- ✅ Google Ads Tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17095898482"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17095898482');
-  </script>
-
-  <!-- Gumroad Scripts -->
-  <script src="https://gumroad.com/js/gumroad-embed.js"></script>
-  <script src="https://gumroad.com/js/gumroad.js"></script>
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://gumroad.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
 
   <style>
     body {
@@ -39,7 +30,7 @@
     }
 
     h1, h2 {
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     h1 {
@@ -52,13 +43,14 @@
       margin-bottom: 2rem;
       max-width: 600px;
       text-align: center;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
-    .product-image {
+    .product-image,
+    .extra-product img {
       max-width: 90%;
       border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       margin-bottom: 2rem;
     }
 
@@ -68,12 +60,10 @@
 
     .subscribe-section {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       gap: 1rem;
       margin-top: 1rem;
-      flex-direction: column;
     }
 
     #gumroad-follow-form-embed {
@@ -108,17 +98,21 @@
       background-color: #e679cc;
     }
 
-    .youtube-button {
+    .youtube-button,
+    .extra-product a {
       display: inline-block;
-      background: #ff0000;
       color: #fff;
       padding: 0.75rem 1.5rem;
       border-radius: 30px;
       font-weight: bold;
       text-decoration: none;
       font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       transition: transform 0.2s ease, background 0.3s ease;
+    }
+
+    .youtube-button {
+      background: #ff0000;
     }
 
     .youtube-button:hover {
@@ -131,24 +125,8 @@
       text-align: center;
     }
 
-    .extra-product img {
-      max-width: 90%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      margin-bottom: 1rem;
-    }
-
     .extra-product a {
-      display: inline-block;
       background: #00c896;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform 0.2s ease, background 0.3s ease;
     }
 
     .extra-product a:hover {
@@ -157,15 +135,8 @@
     }
 
     @media (max-width: 500px) {
-      h1 {
-        font-size: 2rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-      .subscribe-section {
-        flex-direction: column;
-      }
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
     }
   </style>
 </head>
@@ -174,17 +145,17 @@
     <h1>🌊 Free Download from AgrimArt</h1>
     <p>Step into a dreamy world—grab this free digital product and follow for more creative drops.</p>
 
-    <img src="https://agrimart.in/assets/images/product/1640.jpg" alt="Product preview" class="product-image" />
+    <img src="https://agrimart.in/assets/images/product/1640.jpg" alt="Product preview" class="product-image" loading="lazy" />
 
     <div class="gumroad-product-embed">
       <a href="https://agrimart.gumroad.com/l/mkpch">Loading product...</a>
     </div>
 
     <div class="subscribe-section">
-      <form class="input-with-button" action="https://gumroad.com/follow_from_embed_form" method="post" id="gumroad-follow-form-embed">
+      <form action="https://gumroad.com/follow_from_embed_form" method="post" id="gumroad-follow-form-embed">
         <input type="hidden" name="seller_id" value="6308099651361" />
         <input id="gumroad-follow-form-embed-input" type="email" placeholder="Your email address" name="email" required />
-        <button class="button primary" type="submit" id="gumroad-follow-form-embed-button">✨ Follow for More</button>
+        <button type="submit" id="gumroad-follow-form-embed-button">✨ Follow for More</button>
       </form>
 
       <a href="https://www.youtube.com/@ytagrimart" target="_blank" class="youtube-button">📺 Visit My YouTube Channel</a>
@@ -192,10 +163,20 @@
 
     <div class="extra-product">
       <h2>🎁 Another Freebie from AgrimArt</h2>
-      <img src="https://agrimart.in/assets/images/product/585.jpg" alt="Second free product preview" />
+      <img src="https://agrimart.in/assets/images/product/585.jpg" alt="Second free product preview" loading="lazy" />
       <br />
-      <a class="gumroad-button" href="https://agrimart.gumroad.com/l/kyhhb">🛍️ Get This Free Too</a>
+      <a href="https://agrimart.gumroad.com/l/kyhhb">🛍️ Get This Free Too</a>
     </div>
   </div>
+
+  <!-- Async Scripts moved to bottom -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17095898482"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17095898482');
+  </script>
+  <script src="https://gumroad.com/js/gumroad-embed.js"></script>
 </body>
 </html>
