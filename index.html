@@ -2,180 +2,207 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>✨ Free Download – AgrimArt</title>
 
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://gumroad.com" />
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://gumroad.com"/>
+  <link rel="preconnect" href="https://www.googletagmanager.com"/>
 
   <style>
+    /* ─────────── Base ─────────── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      background: url('https://public-files.gumroad.com/mv4uwy97tucm1brc2xm8dn1ox5g0') center/cover fixed;
       color: #fff;
-      background: url('https://public-files.gumroad.com/mv4uwy97tucm1brc2xm8dn1ox5g0') no-repeat center center fixed;
-      background-size: cover;
-      backdrop-filter: blur(4px);
+      line-height: 1.5;
     }
+    a { text-decoration: none; }
 
+    /* ─────────── Overlay ─────────── */
     .overlay {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
       min-height: 100vh;
-      padding: 3rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-    }
-
-    h1, h2 {
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      padding: 3rem 1rem;
     }
 
     h1 {
       font-size: 2.8rem;
       margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
-
     p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
       max-width: 600px;
       text-align: center;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
     }
 
-    .product-image,
-    .extra-product img {
-      max-width: 90%;
+    /* ─────────── Cards ─────────── */
+    .card {
+      background: rgba(255,255,255,0.1);
       border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 480px;
       margin-bottom: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
     }
 
-    .gumroad-product-embed {
-      margin-bottom: 2rem;
+    /* Main card override */
+    .card--main {
+      max-width: 800px;
+    }
+    @media (min-width: 1400px) {
+      .card--main { max-width: 960px; }
     }
 
-    .subscribe-section {
+    /* ─────────── Images ─────────── */
+    .product-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      object-fit: cover;
+      loading: lazy;
+    }
+    .small-image {
+      width: 120px;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      object-fit: cover;
+      loading: lazy;
+    }
+
+    /* ─────────── Buttons ─────────── */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      font-weight: bold;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease, background 0.3s ease;
+      margin-top: 0.5rem;
+    }
+    .btn--primary { background: #00c896; }
+    .btn--primary:hover { background: #00a67a; transform: scale(1.05); }
+
+    .btn--youtube { background: #ff0000; }
+    .btn--youtube:hover { background: #cc0000; transform: scale(1.05); }
+
+    .btn--instagram { background: #e1306c; }
+    .btn--instagram:hover { background: #c1265e; transform: scale(1.05); }
+
+    /* ─────────── Subscribe ─────────── */
+    .subscribe {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-bottom: 2rem;
     }
-
-    #gumroad-follow-form-embed {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-    }
-
-    #gumroad-follow-form-embed-input {
+    .subscribe input {
       padding: 0.75rem 1rem;
-      font-size: 1rem;
-      border-radius: 0.25rem;
       border: none;
-      width: 250px;
-      background: #fff;
-      color: #000;
+      border-radius: 4px;
+      width: 100%;
+      max-width: 260px;
     }
-
-    #gumroad-follow-form-embed-button {
+    .subscribe button {
       padding: 0.75rem 1.25rem;
-      background-color: #ff90e8;
+      background: #ff90e8;
       border: none;
-      border-radius: 0.25rem;
+      border-radius: 4px;
       font-weight: bold;
       cursor: pointer;
       transition: background 0.2s ease;
       color: #000;
     }
+    .subscribe button:hover { background: #e679cc; }
 
-    #gumroad-follow-form-embed-button:hover {
-      background-color: #e679cc;
-    }
-
-    .youtube-button,
-    .extra-product a {
-      display: inline-block;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s ease, background 0.3s ease;
-    }
-
-    .youtube-button {
-      background: #ff0000;
-    }
-
-    .youtube-button:hover {
-      transform: scale(1.05);
-      background-color: #cc0000;
-    }
-
-    .extra-product {
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    .extra-product a {
-      background: #00c896;
-    }
-
-    .extra-product a:hover {
-      transform: scale(1.05);
-      background-color: #00a67a;
+    footer {
+      margin-top: 2rem;
     }
 
     @media (max-width: 500px) {
-      h1 { font-size: 2rem; }
-      p { font-size: 1rem; }
+      h1 { font-size: 2.2rem; }
+      p  { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
   <div class="overlay">
+
+    <!-- Main Freebie Card -->
     <h1>🌊 Free Download from AgrimArt</h1>
     <p>Step into a dreamy world—grab this free digital product and follow for more creative drops.</p>
-
-    <img src="https://agrimart.in/assets/images/product/1640.jpg" alt="Product preview" class="product-image" loading="lazy" />
-
-    <div class="gumroad-product-embed">
-      <a href="https://agrimart.gumroad.com/l/mkpch">Loading product...</a>
+    <div class="card card--main">
+      <img
+        src="https://agrimart.in/assets/images/product/1640.jpg"
+        alt="Main Product Preview"
+        class="product-image"
+      />
+      <div class="gumroad-product-embed">
+        <a href="https://agrimart.gumroad.com/l/mkpch" class="btn btn--primary" target="_blank">
+          🛍️ Get It Now
+        </a>
+      </div>
     </div>
 
-    <div class="subscribe-section">
-      <form action="https://gumroad.com/follow_from_embed_form" method="post" id="gumroad-follow-form-embed">
-        <input type="hidden" name="seller_id" value="6308099651361" />
-        <input id="gumroad-follow-form-embed-input" type="email" placeholder="Your email address" name="email" required />
-        <button type="submit" id="gumroad-follow-form-embed-button">✨ Follow for More</button>
+    <!-- Subscribe & YouTube -->
+    <div class="subscribe">
+      <form action="https://gumroad.com/follow_from_embed_form" method="post">
+        <input type="hidden" name="seller_id" value="6308099651361"/>
+        <input type="email" name="email" placeholder="Your email address" required/>
+        <button type="submit">✨ Follow for More</button>
       </form>
-
-      <a href="https://www.youtube.com/@ytagrimart" target="_blank" class="youtube-button">📺 Visit My YouTube Channel</a>
+      <a href="https://www.youtube.com/@ytagrimart" target="_blank" class="btn btn--youtube">
+        📺 Visit My YouTube
+      </a>
     </div>
 
-    <div class="extra-product">
-      <h2>🎁 Another Freebie from AgrimArt</h2>
-      <img src="https://agrimart.in/assets/images/product/585.jpg" alt="Second free product preview" loading="lazy" />
-      <br />
-      <a href="https://agrimart.gumroad.com/l/kyhhb">🛍️ Get This Free Too</a>
+    <!-- Extra Freebie at Bottom -->
+    <div class="card">
+      <h2>🎁 Another Freebie</h2>
+      <img
+        src="https://public-files.gumroad.com/oqo2l1misxi1fbp2783sgu4vz1yl"
+        alt="Second Free Product"
+        class="small-image"
+      />
+      <a href="https://agrimart.gumroad.com/l/kyhhb" target="_blank" class="btn btn--primary">
+        🛍️ Download Free
+      </a>
     </div>
+
+    <!-- Instagram Footer -->
+    <footer>
+      <a href="https://www.instagram.com/agrimart.blend/" target="_blank" class="btn btn--instagram">
+        📸 Follow on Instagram
+      </a>
+    </footer>
   </div>
 
-  <!-- Async Scripts moved to bottom -->
+  <!-- Scripts -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17095898482"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer||[];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'AW-17095898482');
+    gtag('config','AW-17095898482');
   </script>
   <script src="https://gumroad.com/js/gumroad-embed.js"></script>
 </body>
